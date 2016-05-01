@@ -8,7 +8,8 @@ FROM zcy/centos7
 MAINTAINER Carson,C.J.Zeong <zcy@nicescale.com>
 
 ENV DATA_DIR /var/lib/mysql
-
+ENV TERM xterm
+ 
 RUN yum -y install mariadb mariadb-server && \
     yum clean all
 
