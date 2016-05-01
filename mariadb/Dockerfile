@@ -14,7 +14,7 @@ RUN yum -y install mariadb mariadb-server && \
 
 COPY mysqld_charset.cnf /etc/my.cnf.d/
 COPY my.cnf /etc/my.cnf
-COPY run.sh /run.sh
+COPY scripts /scripts
 
 RUN chmod +x /scripts/start
 
