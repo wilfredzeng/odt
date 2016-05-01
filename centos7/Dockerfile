@@ -11,7 +11,9 @@ ENV TZ "Asia/Shanghai"
 
 RUN yum -y install curl wget tar bzip2 unzip vim-enhanced passwd sudo yum-utils hostname net-tools rsync man && \
     yum install -y gcc gcc-c++ git make automake cmake patch python-devel libpng-devel libjpeg-devel && \
-    yum install -y --enablerepo=epel pwgen python-pip && \
+    yum clean all
+
+RUN yum install -y --enablerepo=epel pwgen python-pip && \
     yum clean all
 
 RUN pip install supervisor && \
