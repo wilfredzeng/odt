@@ -21,8 +21,8 @@ COPY nginx_default.conf /etc/nginx/conf.d/default.conf
 COPY php_www.conf /etc/php-fpm.d/www.conf
 COPY app/ /app
 
-COPY supervisor_nginx.conf /etc/supervisor.conf.d/nginx.conf
-COPY supervisor_php-fpm.conf /etc/supervisor.conf.d/php-fpm.conf
+COPY supervisor_nginx.conf /etc/supervisor/confd/nginx.conf
+COPY supervisor_php-fpm.conf /etc/supervisor/confd/php-fpm.conf
 
 # EXPOSE 80 443
 
