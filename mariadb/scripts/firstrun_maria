@@ -6,7 +6,7 @@ DB_NAME=${DB_NAME:-}
 
 if [[ -n "${DB_NAME}" ]]; then
 	DB_USER=${DB_USER:-admin}
-	DB_PASS=${DB_PASS:-csphere2015}
+	DB_PASS=${DB_PASS:-csphere2016}
 fi
 
 MARIADB_NEW='false'
