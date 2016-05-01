@@ -22,4 +22,4 @@ COPY supervisord.conf /etc/supervisord.conf
 
 # EXPOSE 22
 
-CMD ["/usr/bin/supervisor", "-c", "/etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
