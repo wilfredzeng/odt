@@ -7,6 +7,5 @@
 FROM      sebp/elk:latest 
 MAINTAINER Carson,C.J.Zeong <zcy@nicescale.com>
 
-COPY logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
-COPY logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
-COPY 30-output.conf /etc/logstash/conf.d/30-output.conf
+COPY logstash-beats.key /etc/pki/tls/private/logstash-forwarder.key
+COPY logstash-beats.crt /etc/pki/tls/certs/logstash-forwarder.crt
