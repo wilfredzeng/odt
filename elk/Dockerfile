@@ -9,3 +9,5 @@ MAINTAINER Carson,C.J.Zeong <zcy@nicescale.com>
 
 COPY logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
 COPY logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
+COPY logstash-beats.crt /etc/pki/tls/certs/logstash-beats.crt
+COPY logstash-beats.key /etc/pki/tls/private/logstash-beats.key

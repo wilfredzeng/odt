@@ -17,8 +17,10 @@ RUN yum -y install rsyslog && \
 
 COPY logstash-forwarder.conf /etc/logstash-forwarder.conf
 COPY logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
+COPY logstash-beats.crt /etc/pki/tls/certs/logstash-beats.crt
 COPY supervisor_rsyslog.conf /etc/supervisor/confd/rsyslog.conf
 COPY supervisor_logstash-forwarder.conf /etc/supervisor/confd/logstash-forwarder.conf
+COPY filebeat.yml /etc/filebeat/filebeat.yml
 
 VOLUME ["/data/logs"]
 
