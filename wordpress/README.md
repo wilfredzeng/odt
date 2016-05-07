@@ -5,17 +5,12 @@
 ### 如何构建
 
 ```
-git clone https://git.oschina.net/csphere/wordpress.git
 cd wordpress
-docker build -t csphere/wordpress:4.3 .
+docker build -t zcy/wordpress .
 ```
 
 ### 运行容器
 
 ```
-docker run -d -p 80:80 --name myblog --restart=always -e WORDPRESS_DB_USER=myuser -e WORDPRESS_DB_PASSWORD=mypass -e WORDPRESS_DB_HOST=192.168.42.1 -v /data/logs:/var/log/nginx csphere/wordpress:4.3
+docker run -d -p 80:80 --name worpdress -e WORDPRESS_DB_HOST=172.17.0.1 -e WORDPRESS_DB_USER=zcy -e WORDPRESS_DB_PASSWORD=zcypaas zcy/wordpress
 ```
-
-或者
-
-`docker-compose up -d`
