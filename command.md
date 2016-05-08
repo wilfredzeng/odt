@@ -227,3 +227,43 @@ ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker
 `docker run -d swarm join --advertise=172.16.0.148:2376 consul://172.16.0.87:8500`
 
 **构建Swarm Manage HA 按照以上命令执行；**
+
+## 十、持续集成
+
+### 安装部署gitlab
+
+```
+docker run --detach \
+    --hostname gitlab.example.com \
+    --publish 443:443 --publish 80:80 \
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    reg.zcy.com:8888/gitlab-ce:latest
+```
+
+> http://<your_ip>
+
+**默认登陆用户密码**
+
+```
+`user`:`root`
+`password`:`5iveL!fe`
+```
+### 部署`jenkins`
+
+```
+docker run -d -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock reg.zcy.com:8888/jenkins:1.625.2
+```
+### 配置项目
+
+```
+REG=192.168.55.2
+TAG=`cat version | awk -F= '{print $2}'`
+IMAGE=$REG/discuss:$TAG
+
+docker build $IMAGE .
+docker push $IMAGE
+```
