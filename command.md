@@ -181,8 +181,11 @@ docker push reg.odt.com:8888/busybox
 
 ### 更改docker daemon启动参数
 
-`ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --cluster-store=consul://172.16.0.87:8500 --cluster-advertise=eth0:2376
-`
+```
+vim /etc/systemd/system/multi-user.target.wants/docker.service
+
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --cluster-store=consul://172.16.0.87:8500 --cluster-advertise=eth0:2376
+```
 > 注意ip地址
 
 ### 确认docker daemon启动参数更改是否生效
