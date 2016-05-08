@@ -244,7 +244,7 @@ docker run --detach \
     reg.zcy.com:8888/gitlab-ce:latest
 ```
 
-> http://<your_ip>
+http://<your_ip>
 
 **默认登陆用户密码**
 
