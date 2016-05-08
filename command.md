@@ -167,3 +167,25 @@ docker push reg.odt.com:8888/busybox
 登陆kibana管理面板: `http://<your-host>:5601`,查看日志信息；
 
 `logstash-*` to `filebeat-*`
+
+# 八、网络实战
+
+- 服务发现 etcd、consul、zookeeper
+
+- docker 1.9+
+
+### 下载安装consul
+
+`docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h consul reg.zcy.com:8888/consul -server -bootstrap -ui-dir /ui
+`
+progrium/consul --> reg.zcy.com/consul
+
+### 更改docker daemon启动参数
+
+`ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --cluster-store=consul://172.16.0.87:8500 --cluster-advertise=eth0:2376
+`
+> 注意ip地址
+
+### 确认docker daemon启动参数更改是否生效
+
+`ps -aux | grep docker`
