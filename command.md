@@ -178,7 +178,6 @@ docker push reg.odt.com:8888/busybox
 
 `docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h consul reg.zcy.com:8888/consul -server -bootstrap -ui-dir /ui
 `
-progrium/consul --> reg.zcy.com/consul
 
 ### 更改docker daemon启动参数
 
