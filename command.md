@@ -200,3 +200,30 @@ ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker
 ```
 ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --cluster-store=consul://172.16.0.87:8500 --cluster-advertise=eth0:2376
 ```
+
+## 九、实战Swarm
+
+### 下载镜像
+
+`docker reg.zcy.com:8888/swarm`
+
+### 确保`consul`服务正常运行
+
+`docker ps -a | grep consul`or`登陆控制面板进行查看`
+
+### 安装控制器`manager`
+
+`docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise 172.16.0.87:4000 consul://172.16.0.87:8500`
+
+### 安装节点
+
+`docker run -d swarm join --advertise=172.16.0.87:2376 consul://172.16.0.87:8500`
+
+### host-B主机安装节点(172.16.0.148)
+
+`docker run -d -p 4000:4000 swarm manage -H :4000 --replication  --advertise 172.16.0.148:4000 consul://172.16.0.87:8500`
+
+### 加入集群
+`docker run -d swarm join --advertise=172.16.0.148:2376 consul://172.16.0.87:8500`
+
+**构建Swarm Manage HA 按照以上命令执行；**
